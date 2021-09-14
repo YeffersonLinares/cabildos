@@ -1,0 +1,52 @@
+vs-notify h4{ font-weight: bold; font-size:16px; margin:0; margin-bottom:4px; }
+	
+	/* Singleton */
+	
+	.vs-notify.single .ntf{ border:none; border:1px solid green; text-align:center; background:#5a5; }
+	
+	/* Custom notifications style */
+	
+	.vs-notify.custom .ntf
+	{
+		border:none; border-radius: 7px; font-size: 14px; padding: 2px; color: #5A6B81; background: #E5EBF1; cursor:default;
+	}
+	
+	.vs-notify.custom .title{ border-top-left-radius: 7px; border-top-right-radius: 7px; position: relative; color: white; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; background: #f2125e; padding: 8px; }
+	
+	.vs-notify.custom .close
+	{
+		width: 20px; height: 20px; line-height: 20px; position: absolute; top: 6px; right: 5px; cursor: pointer; color: red; font-weight: 900; border-radius: 4px;
+		
+		background: red; color: white; text-align: center;
+	}
+	
+	.vs-notify.custom .content{ border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; padding:14px 2px 6px 2px; background: #ffff; }
+	
+	/* Style 1 */
+	
+	.vs-notify.style1 { width:180px; }
+	
+	.vs-notify.style1 .ntf
+	{
+		color: #8898A5; padding: 12px; background: #FCFDFF; border: 1px solid #eaeefb; margin:8px;
+		box-shadow: 0 0 5px 0 rgba(232, 237, 250, 0.6), 0 3px 8px 0 rgba(232, 237, 250, 0.5);
+	}
+	.vs-notify.style1 h4 { color:red; font-weight: 600; }
+	
+	/* Style 2 */
+	
+	.vs-notify.style2 { width:80%; }
+	
+	.vs-notify.style2 .ntf
+	{
+		background: #444; border: 2px solid #fe0; border-radius:12px;
+		box-shadow: 0 0 9px 0 rgba(55, 55, 55, 0.7); font-size:16px; height:90px; margin:8px; margin-top:8px; padding:0;
+	}
+	.vs-notify.style2 .cnt{ padding:12px;}
+	.vs-notify.style2 h4 { color:#fe0; font-weight: 600; }
+	
+	/* Let's override ntf-bottom animation */
+	
+	.vs-notify.style2 .ntf-bottom-enter-active, .ntf-bottom-leave-active { transition: all 0.4s; }
+	.vs-notify.style2 .ntf-bottom-enter   { opacity:0; transform: none; height:0; margin-top:-12px; }
+	.vs-notify.style2 .ntf-bottom-leave-to{ opacity:0; transform: translateY(-95px); }
