@@ -78,7 +78,7 @@
                                     <i class="fas fa-edit"></i>
                                 </button>
 
-                                <button type="button" class="btn btn-danger btn-sm" @click="deleteSesion(i.id)">
+                                <button type="button" class="btn btn-danger btn-sm" @click="deleteSesion(i)">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -135,7 +135,7 @@
                 this.datos.cabildo = i;
                 this.pantalla = "crud";
             },
-            deleteSesion(id) {
+            deleteSesion(i) {
                 Swal.fire({
                     title: "¿Eliminar registro?",
                     text: "Esta acción no se puede revertir",
@@ -146,39 +146,10 @@
                     confirmButtonText: "Aceptar",
                     cancelButtonText: "Cancelar",
                 }).then((result) => {
-                    console.log(result);
                     if (result.value) {
-                        const url = "/delete-session/" + id;
-                        axios.put(url).then((r) => {
-                            this.cabildos = r.data.cabildos;
-                            Swal.fire(
-                                "¡Perfecto!",
-                                "Datos eliminados correctamente",
-                                "success"
-                            );
-                        });
-                    }
-                });
-            },
-            saveEdit() {
-                let datos = this.datos_edit;
-                let url = "/editSesion";
-                axios.post(url, datos).then((res) => {
-                    if (res.data.status == 406) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "¡Error!",
-                            text: res.data.msg,
-                        });
-                    } else {
-                        this.action = 0;
-                        this.cabildos = res.data.table;
-                        // console.log(r.data);
-                        // return false;
-                        Swal.fire({
-                            icon: "success",
-                            title: "¡Perfercto!",
-                            text: "Datos guardados exitosamente",
+                        axios.get("/destroy_sesion/"+i.id).then((res) => {
+                            Swal.fire("¡Perfecto!",res.data.msg,"success");
+                            this.getResults();
                         });
                     }
                 });

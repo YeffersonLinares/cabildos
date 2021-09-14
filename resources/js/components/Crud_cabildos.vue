@@ -37,7 +37,7 @@
                             <div class="mb-3">
                                 <label for="" class="form-label"><b>Departamento *</b></label>
                                 <select class="form-select" aria-label="Default select example"
-                                    v-model="cabildo.dep_id" v-on:change="changeCity()" id="departamento_id">
+                                    v-model="cabildo.departamento" id="departamento_id">
                                     <option v-for="(i, index) in departamentos" :key="index" :value="i.id"
                                         v-text="i.nombre"></option>
                                 </select>
@@ -49,6 +49,7 @@
                                 <select class="form-select" name="municipality" id="municipio"
                                     v-model="cabildo.ciu_id">
                                     <option>Seleccione ...</option>
+                                    <option v-for="(i,index) in departamento.ciudades" :key="index"></option>
                                 </select>
                             </div>
                         </div>
@@ -76,7 +77,7 @@
                             <input type="text" class="form-control" maxlength="30" v-model="cabildo.radicado_CNE" />
                         </div>
                         <div class="row mt-5">
-                            <div class="form-group files border" role="button" id="box_file">
+                            <div class="form-group files border" role="button" id="box_file" @click="box_file">
                                 <div class="row mt-5">
                                     <img class="img_file mx-auto d-block" src="" alt="" />
                                 </div>
@@ -84,10 +85,10 @@
                                     <p class="text_file text-center">Edita tus documentos aquí</p>
                                 </div>
                             </div>
-                            <input id="file" type="file" class="form-control d-none" />
+                            <input id="file" type="file" class="form-control d-none file" />
                         </div>
                         <div class="row mt-5">
-                            <button type="button" class="btn-primary btn">Guardar</button>
+                            <button type="button" class="btn-primary btn" @click="store">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -119,6 +120,12 @@
             },
             regresar() {
                 this.$emit("pantalla", "listado");
+            },
+            store(){
+                alert('llego')
+            },
+            box_file(){
+                $('#file').trigger('click')
             },
         },
     };

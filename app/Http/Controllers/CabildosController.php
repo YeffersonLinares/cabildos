@@ -91,15 +91,19 @@ class CabildosController extends Controller
         ]);
     }
 
-    public function destroy($id)
-    {
-        $cabildo = CabildoAbierto::find($id);
-        $cabildo->estado = 0;
-        $cabildo->save();
-    }
-
     public function downloadFile($file)
     {
         return response()->download(storage_path("app/public/uploads/$file"));
+    }
+
+    public function destroy($id)
+    {
+        $cabildo = CabildoAbierto::find($id);
+        $cabildo->estado = '0';
+        $cabildo->save();
+        return response()->json([
+            'status' => 200,
+            'msg' => 'Cabildo eliminado con éxito',
+        ]);
     }
 }

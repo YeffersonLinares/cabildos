@@ -142,7 +142,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit-sesion', [CabildosController::class, 'edit']);
         Route::post('/edit-sesion-document', [CabildosController::class, 'editDocument']);
         Route::post('/editSesion', [CabildosController::class, 'editSesion']);
-        Route::put('/delete-session/{id}', [CabildosController::class, 'destroy']);
+        Route::get('/destroy_sesion/{id}', [CabildosController::class, 'destroy']);
         Route::post('/view-documents', [CabildosController::class, 'viewDocuments']);
         Route::get('/uploads/{file}', [CabildosController::class, 'downloadFile']);
         Route::get('/report-cabildos', [CabildosController::class, 'reportSessions']);
